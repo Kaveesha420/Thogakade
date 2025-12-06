@@ -1,6 +1,8 @@
 package Service;
 
 import Model.dto.EmployeeDto;
+import Repositry.EmployeeRepositry;
+import Repositry.EmployeeRepositryImpl;
 import db.DBConnection;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
@@ -9,28 +11,11 @@ import java.sql.*;
 
 public class EmployeeDb implements EmployeeService {
 
+    EmployeeRepositry employeeRepositry = new EmployeeRepositryImpl();
+
+        @Override
         public void AddEmployeeDetails(String employeeID, String name, String nic, String DOB, String position, double salary, String contactNumber, String address, String joinDate, String status){
-            try {
-                Connection connection = DBConnection.getInstance().getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO employee VALUES(?,?,?,?,?,?,?,?,?,?)");
-
-                preparedStatement.setObject(1, employeeID);
-                preparedStatement.setObject(2, name);
-                preparedStatement.setObject(3, nic);
-                preparedStatement.setObject(4, DOB);
-                preparedStatement.setObject(5, position);
-                preparedStatement.setObject(6, salary);
-                preparedStatement.setObject(7, contactNumber);
-                preparedStatement.setObject(8, address);
-                preparedStatement.setObject(9, joinDate);
-                preparedStatement.setObject(10, status);
-
-                preparedStatement.executeUpdate();
-
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            employeeRepositry.addEmployee(employeeID,name,nic,DOB,position,salary,contactNumber,address,joinDate,status);
         }
 
         public void UpdateEmployeeDetails(String employeeID, String name, String nic, String DOB, String position, double salary, String contactNumber, String address, String joinDate, String status){
