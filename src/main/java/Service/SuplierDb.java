@@ -1,6 +1,8 @@
 package Service;
 
 import Model.dto.SupplierDto;
+import Repositry.SupplierRepositry;
+import Repositry.SupplierRepositryImpl;
 import db.DBConnection;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
@@ -11,24 +13,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SuplierDb implements SuplierService {
+
+    SupplierRepositry supplierRepositry = new SupplierRepositryImpl();
+
     @Override
     public void addSuplierDetails(String supId, String name, String companyName, String address, String city, String province, String postalCode, String phone, String email) {
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO supplier VALUES(?,?,?,?,?,?,?,?,?)");
-            preparedStatement.setObject(1,supId);
-            preparedStatement.setObject(2,name);
-            preparedStatement.setObject(3,companyName);
-            preparedStatement.setObject(4,address);
-            preparedStatement.setObject(5,city);
-            preparedStatement.setObject(6,province);
-            preparedStatement.setObject(7,postalCode);
-            preparedStatement.setObject(8,phone);
-            preparedStatement.setObject(9,email);
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        supplierRepositry.addSuplier(supId,name,companyName,address,city,province,postalCode,phone,email);
     }
 
     @Override
