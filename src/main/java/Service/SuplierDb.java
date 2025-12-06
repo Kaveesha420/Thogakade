@@ -36,11 +36,8 @@ public class SuplierDb implements SuplierService {
         ObservableList<SupplierDto> supplierDetails = javafx.collections.FXCollections.observableArrayList();
 
         try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            ResultSet resultSet;
-            try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM supplier")) {
-                resultSet = preparedStatement.executeQuery();
-            }
+            SupplierRepositryImpl supplierRepositry1 = new SupplierRepositryImpl();
+            ResultSet resultSet = supplierRepositry1.getAllSupllier();
 
             while (resultSet.next()){
                 supplierDetails.add(new SupplierDto(

@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class SupplierRepositryImpl implements SupplierRepositry{
@@ -64,5 +65,12 @@ public class SupplierRepositryImpl implements SupplierRepositry{
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public ResultSet getAllSupllier() throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM supplier");
+        return preparedStatement.executeQuery();
     }
 }
