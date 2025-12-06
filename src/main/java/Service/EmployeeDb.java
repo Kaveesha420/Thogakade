@@ -19,27 +19,7 @@ public class EmployeeDb implements EmployeeService {
         }
 
         public void UpdateEmployeeDetails(String employeeID, String name, String nic, String DOB, String position, double salary, String contactNumber, String address, String joinDate, String status){
-            try {
-                Connection connection = DBConnection.getInstance().getConnection();
-                String SQL = "UPDATE employee SET name = ?, nic = ?, dob = ?, position = ?, salary = ?, contactNumber = ?, address = ?, joinDate = ?, status = ? WHERE employee_id = ?";
-                PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-                preparedStatement.setObject(1, name);
-                preparedStatement.setObject(2, nic);
-                preparedStatement.setObject(3, DOB);
-                preparedStatement.setObject(4, position);
-                preparedStatement.setObject(5, salary);
-                preparedStatement.setObject(6, contactNumber);
-                preparedStatement.setObject(7, address);
-                preparedStatement.setObject(8, joinDate);
-                preparedStatement.setObject(9, status);
-                preparedStatement.setObject(10, employeeID);
-
-                preparedStatement.executeUpdate();
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            employeeRepositry.updateEmployee(employeeID,name,nic,DOB,position,salary,contactNumber,address,joinDate,status);
         }
 
         public void DeleteEmployeeDetails(TextField txtEmployeeId) {
