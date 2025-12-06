@@ -1,6 +1,7 @@
 package Repositry;
 
 import db.DBConnection;
+import javafx.scene.control.TextField;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,6 +48,19 @@ public class SupplierRepositryImpl implements SupplierRepositry{
                 preparedStatement.executeUpdate();
             }
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteSuplier(TextField txtSupID) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM supplier WHERE supplier_id = ?")) {
+                preparedStatement.setObject(1, txtSupID.getText());
+                preparedStatement.executeUpdate();
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

@@ -28,15 +28,7 @@ public class SuplierDb implements SuplierService {
 
     @Override
     public void DeleteSuplierDetails(TextField txtSupID) {
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            try (PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM supplier WHERE supplier_id = ?")) {
-                preparedStatement.setObject(1, txtSupID.getText());
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+       supplierRepositry.deleteSuplier(txtSupID);
     }
 
     @Override
