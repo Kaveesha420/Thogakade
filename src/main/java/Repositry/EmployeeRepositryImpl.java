@@ -75,11 +75,9 @@ public class EmployeeRepositryImpl implements EmployeeRepositry{
         }
     }
 
-
     public ResultSet getAllEmployee() throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM employee")) {
-            return preparedStatement.executeQuery();
-        }
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM employee");
+        return preparedStatement.executeQuery();
     }
 }

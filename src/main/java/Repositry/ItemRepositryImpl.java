@@ -13,9 +13,8 @@ public class ItemRepositryImpl implements ItemRepositry {
     @Override
     public ResultSet getAllItem() throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM items")) {
-            return preparedStatement.executeQuery();
-        }
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM items");
+        return preparedStatement.executeQuery();
     }
 
     @Override
