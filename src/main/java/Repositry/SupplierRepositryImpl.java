@@ -28,4 +28,27 @@ public class SupplierRepositryImpl implements SupplierRepositry{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public void updateSuplier(String supId, String name, String companyName, String address, String city, String province, String postalCode, String phone, String email) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            String SQL = "UPDATE supplier SET name = ?, companyName = ?, address = ?, city = ?, province = ?, postalCode = ?, phone = ?, email = ? WHERE supplier_id = ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
+                preparedStatement.setObject(1, name);
+                preparedStatement.setObject(2, companyName);
+                preparedStatement.setObject(3, address);
+                preparedStatement.setObject(4, city);
+                preparedStatement.setObject(5, province);
+                preparedStatement.setObject(6, postalCode);
+                preparedStatement.setObject(7, phone);
+                preparedStatement.setObject(8, email);
+                preparedStatement.setObject(9, supId);
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
