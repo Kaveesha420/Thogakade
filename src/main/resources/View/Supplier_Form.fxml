@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="734.0" prefWidth="1245.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Supplier.SupplierController">
+    <children>
+        <Label layoutX="517.0" layoutY="14.0" text="Supplier Form">
+            <font>
+                <Font name="Agency FB Bold" size="36.0" />
+            </font>
+        </Label>
+        <TableView fx:id="tblSupplierInfo" layoutX="33.0" layoutY="270.0" prefHeight="389.0" prefWidth="1176.0">
+            <columns>
+                <TableColumn fx:id="colSupID" prefWidth="77.5999984741211" text="Supplier ID" />
+                <TableColumn fx:id="colName" prefWidth="262.3999786376953" text="Name" />
+                <TableColumn fx:id="ColCompanyName" minWidth="0.0" prefWidth="104.0" text="Company Name" />
+                <TableColumn fx:id="colAddress" prefWidth="256.00006103515625" text="Address" />
+                <TableColumn fx:id="colCity" prefWidth="90.39996337890625" text="City" />
+                <TableColumn fx:id="colProvince" prefWidth="79.199951171875" text="Province" />
+                <TableColumn fx:id="colPostalCode" prefWidth="76.800048828125" text="Postal Code" />
+                <TableColumn fx:id="colPhone" prefWidth="108.00006103515625" text="Phone" />
+                <TableColumn fx:id="colEmail" prefWidth="124.79998779296875" text="E-mail" />
+            </columns>
+        </TableView>
+        <Button layoutX="917.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnClear" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: black;" text="Clear" textFill="#f7f2f2">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <TextField fx:id="txtSupID" layoutX="59.0" layoutY="93.0" prefHeight="34.0" prefWidth="102.0" promptText="Supplier ID" />
+        <TextField fx:id="txtEmail" layoutX="632.0" layoutY="93.0" prefHeight="34.0" prefWidth="146.0" promptText="E-mail" />
+        <TextField fx:id="txtCity" layoutX="59.0" layoutY="153.0" prefHeight="34.0" prefWidth="110.0" promptText="City" />
+        <TextField fx:id="txtAddress" layoutX="632.0" layoutY="153.0" prefHeight="34.0" prefWidth="239.0" promptText="Address" />
+        <Button layoutX="676.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: black;" text="Delete" textFill="#fcf5f5">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <Button layoutX="443.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: black;" text="Update" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <Button layoutX="218.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: black;" text="ADD" textFill="#f7f5f5">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <TextField fx:id="txtCompanyName" layoutX="230.0" layoutY="93.0" prefHeight="34.0" prefWidth="118.0" promptText="Company Name" />
+        <TextField fx:id="txtPhoneNumber" layoutX="416.0" layoutY="93.0" prefHeight="34.0" prefWidth="134.0" promptText="Phone Number" />
+        <TextField fx:id="txtProvince" layoutX="230.0" layoutY="153.0" prefHeight="34.0" prefWidth="118.0" promptText="Province" />
+        <TextField fx:id="txtPostalCode" layoutX="416.0" layoutY="153.0" prefHeight="34.0" prefWidth="110.0" promptText="PostalCode" />
+      <TextField fx:id="txtName" layoutX="860.0" layoutY="93.0" prefHeight="34.0" prefWidth="239.0" promptText="Name" />
+      <Button layoutX="578.0" layoutY="672.0" mnemonicParsing="false" onAction="#ReloadOnAction" prefHeight="44.0" prefWidth="118.0" style="-fx-background-color: black;" text="Reload" textFill="#f4f2f2">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

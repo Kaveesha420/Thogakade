@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="729.0" prefWidth="981.0" style="-fx-background-color: orange;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Items.ItemController">
+    <children>
+        <Label layoutX="438.0" layoutY="41.0" styleClass="heading" text="Items Form">
+            <font>
+                <Font name="Agency FB Bold" size="36.0" />
+            </font>
+        </Label>
+        <TableView fx:id="tblItemInfo" layoutX="125.0" layoutY="264.0" prefHeight="380.0" prefWidth="715.0">
+            <columns>
+                <TableColumn fx:id="colItemCode" prefWidth="93.60000228881836" text="Item Code" />
+                <TableColumn fx:id="colDescription" prefWidth="252.00001525878906" text="Description" />
+                <TableColumn fx:id="colCategory" prefWidth="128.0" text="Category" />
+                <TableColumn fx:id="colQtyOnHand" prefWidth="100.0" text="QtyOnHand" />
+                <TableColumn fx:id="colUnitPrice" prefWidth="139.199951171875" text="Unit Price" />
+            </columns>
+        </TableView>
+        <Button layoutX="742.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnClear" prefHeight="34.0" prefWidth="82.0" style="-fx-background-color: black;" text="Clear" textFill="#f7f2f2">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <TextField fx:id="txtItemCode" layoutX="57.0" layoutY="136.0" prefHeight="34.0" prefWidth="110.0" promptText="Item Code" />
+        <TextField fx:id="txtDescription" layoutX="653.0" layoutY="136.0" prefHeight="34.0" prefWidth="239.0" promptText="Description" />
+        <Button layoutX="553.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnDelete" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: black;" text="Delete" textFill="#fcf5f5">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <Button layoutX="348.0" layoutY="209.0" mnemonicParsing="false" onAction="#btnUpdate" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: black;" text="Update" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <Button layoutX="147.0" layoutY="210.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="33.0" prefWidth="82.0" style="-fx-background-color: black;" text="ADD" textFill="#f7f5f5">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+        <TextField fx:id="txtCategory" layoutX="209.0" layoutY="136.0" prefHeight="34.0" prefWidth="118.0" promptText="Category" />
+        <TextField fx:id="txtUnitPrice" layoutX="366.0" layoutY="136.0" prefHeight="34.0" prefWidth="110.0" promptText="Unit Price" />
+      <TextField fx:id="txtQtyOnHand" layoutX="508.0" layoutY="136.0" prefHeight="34.0" prefWidth="110.0" promptText="QtyOnHand" />
+      <Button layoutX="449.0" layoutY="658.0" mnemonicParsing="false" onAction="#ReloadOnAction" prefHeight="44.0" prefWidth="118.0" style="-fx-background-color: Black;" text="Reload" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="586.0" prefWidth="1115.0" style="-fx-background-color: orange;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.login_Form_Controller">
+   <children>
+      <Label layoutX="676.0" layoutY="48.0" prefHeight="54.0" prefWidth="304.0" styleClass="heading" stylesheets="@../css/style.css" text="Thogakade Shop">
+         <font>
+            <Font name="Serif Bold" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="739.0" layoutY="87.0" prefHeight="48.0" prefWidth="178.0" styleClass="subheading" text="Welcome to our System">
+         <font>
+            <Font name="Serif Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="574.0" layoutY="166.0" prefHeight="30.0" prefWidth="101.0" text="User Name">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="581.0" layoutY="263.0" prefHeight="30.0" prefWidth="101.0" text="Password">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="609.0" layoutY="210.0" prefHeight="40.0" prefWidth="386.0" promptText="Ex : Kaveesha Sithum" />
+      <PasswordField fx:id="txtPassword" layoutX="609.0" layoutY="297.0" prefHeight="40.0" prefWidth="386.0" promptText="Ex : PAssWo1234%# " />
+      <Button layoutX="723.0" layoutY="395.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="40.0" prefWidth="158.0" style="-fx-background-color: black;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <Hyperlink layoutX="892.0" layoutY="346.0" prefHeight="30.0" prefWidth="108.0" text="frogot password?" textAlignment="CENTER" />
+      <ImageView fitHeight="601.0" fitWidth="527.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Gemini_Generated_Image_cdqmuzcdqmuzcdqm.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

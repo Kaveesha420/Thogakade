@@ -1,0 +1,83 @@
+/* ======= Global Styles ======= */
+.root {
+    -fx-font-family: 'Segoe UI Semibold', 'Poppins', sans-serif;
+    -fx-background-color: linear-gradient(to bottom right, #f5f7fa, #c3cfe2);
+}
+
+/* ======= Headings ======= */
+.heading {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+.subheading {
+    -fx-font-size: 16px;
+    -fx-text-fill: #4a6572;
+}
+
+/* ======= Cards / Panes ======= */
+.card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 8, 0, 0, 2);
+    -fx-padding: 15;
+}
+
+/* ======= Buttons ======= */
+.button {
+    -fx-background-color: linear-gradient(to right, #2193b0, #6dd5ed);
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-background-radius: 25;
+    -fx-border-radius: 25;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 5, 0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #6dd5ed, #2193b0);ad
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+
+/* ======= Text Fields ======= */
+.text-field {
+    -fx-background-color: #f0f3f5;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #b0bec5;
+    -fx-border-width: 1;
+    -fx-padding: 8 10;
+    -fx-text-fill: #37474f;
+}
+
+/* ======= Images / Profile Pictures ======= */
+.image-view {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 8, 0, 0, 3);
+}
+
+/* ======= TableView ======= */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent;
+    -fx-background-radius: 10;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(to right, #2193b0, #6dd5ed);
+}
+
+.table-view .column-header, .table-view .label {
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #e3f2fd;
+}
