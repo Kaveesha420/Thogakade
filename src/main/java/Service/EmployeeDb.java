@@ -3,7 +3,7 @@ package Service;
 import Model.dto.EmployeeDto;
 import Repositry.EmployeeRepositry;
 import Repositry.EmployeeRepositryImpl;
-import db.DBConnection;
+
 import javafx.collections.ObservableList;
 import javafx.scene.control.TextField;
 
@@ -23,15 +23,7 @@ public class EmployeeDb implements EmployeeService {
         }
 
         public void DeleteEmployeeDetails(TextField txtEmployeeId) {
-            try {
-                Connection connection = DBConnection.getInstance().getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM employee WHERE employee_id = ?");
-                preparedStatement.setObject(1 , txtEmployeeId.getText());
-                preparedStatement.executeUpdate();
-
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
+            employeeRepositry.deleteEmployee(txtEmployeeId);
         }
 
 
@@ -40,10 +32,8 @@ public class EmployeeDb implements EmployeeService {
             ObservableList<EmployeeDto> employeeDetails = javafx.collections.FXCollections.observableArrayList();
 
         try {
-           Connection connection = DBConnection.getInstance().getConnection();
-           PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM employee");
-           ResultSet resultSet = preparedStatement.executeQuery();
-
+           EmployeeRepositryImpl employeeRepositry1 = new EmployeeRepositryImpl();
+           ResultSet resultSet = employeeRepositry1.getAllEmployee();
             while (resultSet.next()){
                 employeeDetails.add(new EmployeeDto(
                                 resultSet.getString(1),
