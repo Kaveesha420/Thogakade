@@ -1,5 +1,9 @@
 package Model.dto;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.*;
 
 @Getter
@@ -7,9 +11,13 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-
+@Entity
+@Table(name = "customers")
 public class CustomerDto {
+    @Id
+    @Column(name = "customer_id")
     private String cusId;
+
     private String title;
     private String name;
     private String dob;
