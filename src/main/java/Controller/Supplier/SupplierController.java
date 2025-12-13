@@ -19,9 +19,7 @@ import java.util.ResourceBundle;
 public class SupplierController implements Initializable {
 
     SuplierService suplierService = new SuplierDb();
-    ObservableList <SupplierDto> supplierDtos = FXCollections.observableArrayList(
-
-    );
+    ObservableList<SupplierDto> supplierDtos = FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> ColCompanyName;
@@ -81,28 +79,16 @@ public class SupplierController implements Initializable {
     private TextField txtSupID;
 
     public void btnClear(ActionEvent actionEvent) {
-        txtSupID.setText("");
-        txtName.setText("");
-        txtCompanyName.setText("");
-        txtAddress.setText("");
-        txtCity.setText("");
-        txtProvince.setText("");
-        txtPostalCode.setText("");
-        txtPhoneNumber.setText("");
-        txtEmail.setText("");
-
+        clearField();
     }
 
     public void btnDelete(ActionEvent actionEvent) {
-        supplierDtos.clear();
         suplierService.DeleteSuplierDetails(txtSupID);
         clearField();
         loadDetails();
     }
 
     public void btnUpdate(ActionEvent actionEvent) {
-        supplierDtos.clear();
-
         String supId = txtSupID.getText();
         String name = txtName.getText();
         String companyName = txtCompanyName.getText();
@@ -113,16 +99,12 @@ public class SupplierController implements Initializable {
         String phone = txtPhoneNumber.getText();
         String email = txtEmail.getText();
 
-        suplierService.UpdateSuplierDetails(supId,name,companyName,address,city,province,postalCode,phone,email);
+        suplierService.UpdateSuplierDetails(supId, name, companyName, address, city, province, postalCode, phone, email);
         clearField();
         loadDetails();
-
     }
 
     public void btnAdd(ActionEvent actionEvent) {
-
-        supplierDtos.clear();
-
         String supId = txtSupID.getText();
         String name = txtName.getText();
         String companyName = txtCompanyName.getText();
@@ -133,12 +115,12 @@ public class SupplierController implements Initializable {
         String phone = txtPhoneNumber.getText();
         String email = txtEmail.getText();
 
-        suplierService.addSuplierDetails(supId,name,companyName,address,city,province,postalCode,phone,email);
+        suplierService.addSuplierDetails(supId, name, companyName, address, city, province, postalCode, phone, email);
         clearField();
         loadDetails();
     }
 
-    public void clearField(){
+    public void clearField() {
         txtAddress.clear();
         txtCity.clear();
         txtSupID.clear();
@@ -150,8 +132,8 @@ public class SupplierController implements Initializable {
         txtProvince.clear();
     }
 
-    public void loadDetails(){
-       tblSupplierInfo.setItems(suplierService.getAllDetails());
+    public void loadDetails() {
+        tblSupplierInfo.setItems(suplierService.getAllDetails());
     }
 
     @FXML
@@ -161,8 +143,17 @@ public class SupplierController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        colSupID.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ColCompanyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colCity.setCellValueFactory(new PropertyValueFactory<>("City"));
+        colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
+        colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+        colPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        tblSupplierInfo.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )->{
+        tblSupplierInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 txtSupID.setText(newValue.getSupplierId());
                 txtName.setText(newValue.getName());
@@ -175,15 +166,7 @@ public class SupplierController implements Initializable {
                 txtEmail.setText(newValue.getEmail());
             }
         });
-        colSupID.setCellValueFactory(new PropertyValueFactory<>("supplierId"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        ColCompanyName.setCellValueFactory(new PropertyValueFactory<>("companyName"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colCity.setCellValueFactory(new PropertyValueFactory<>("City"));
-        colProvince.setCellValueFactory(new PropertyValueFactory<>("province"));
-        colPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
-        colPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+
         loadDetails();
     }
 }

@@ -84,34 +84,17 @@ public class EmployeeController implements Initializable {
     @FXML
     private TextField txtStatus;
 
-
     public void btnClear(ActionEvent actionEvent) {
-        txtEmployeeId.setText("");
-        txtName.setText("");
-        txtNic.setText("");
-        txtDob.setText("");
-        txtSalary.setText("");
-        txtAddress.setText("");
-        txtPosition.setText("");
-        txtContactNumber.setText("");
-        txtJoinDate.setText("");
-        txtStatus.setText("");
+        clearField();
     }
 
     public void btnDelete(ActionEvent actionEvent) {
-
-        employeeDtos.clear();
-
         employeeService.DeleteEmployeeDetails(txtEmployeeId);
-
         clearField();
         loadDetails();
     }
 
     public void btnUpdate(ActionEvent actionEvent) {
-
-        employeeDtos.clear();
-
         String EmployeeID = txtEmployeeId.getText();
         String Name = txtName.getText();
         String Nic = txtNic.getText();
@@ -123,16 +106,12 @@ public class EmployeeController implements Initializable {
         String JoinDate = txtJoinDate.getText();
         String Status = txtStatus.getText();
 
-        employeeService.UpdateEmployeeDetails(EmployeeID,Name,Nic,DOB,Position,Salary,ContactNumber,Address,JoinDate,Status);
+        employeeService.UpdateEmployeeDetails(EmployeeID, Name, Nic, DOB, Position, Salary, ContactNumber, Address, JoinDate, Status);
         clearField();
         loadDetails();
-
     }
 
     public void btnAdd(ActionEvent actionEvent) {
-
-        employeeDtos.clear();
-
         String EmployeeID = txtEmployeeId.getText();
         String Name = txtName.getText();
         String Nic = txtNic.getText();
@@ -144,7 +123,7 @@ public class EmployeeController implements Initializable {
         String JoinDate = txtJoinDate.getText();
         String Status = txtStatus.getText();
 
-        employeeService.AddEmployeeDetails(EmployeeID,Name,Nic,DOB,Position,Salary,ContactNumber,Address,JoinDate,Status);
+        employeeService.AddEmployeeDetails(EmployeeID, Name, Nic, DOB, Position, Salary, ContactNumber, Address, JoinDate, Status);
         clearField();
         loadDetails();
     }
@@ -154,7 +133,7 @@ public class EmployeeController implements Initializable {
         loadDetails();
     }
 
-    public void clearField(){
+    public void clearField() {
         txtAddress.clear();
         txtDob.clear();
         txtEmployeeId.clear();
@@ -165,44 +144,40 @@ public class EmployeeController implements Initializable {
         txtPosition.clear();
         txtSalary.clear();
         txtStatus.clear();
-
     }
 
-    public void loadDetails(){
+    public void loadDetails() {
         tblEmployeeInfo.setItems(employeeService.getAllEmployee());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        tblEmployeeInfo.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newVallue )->{
-            if (newVallue != null){
-                txtAddress.setText(newVallue.getAddress());
-                txtDob.setText(newVallue.getDob());
-                txtEmployeeId.setText(newVallue.getEmployeeId());
-                txtName.setText(newVallue.getName());
-                txtNic.setText(newVallue.getNic());
-                txtContactNumber.setText(newVallue.getContactNumber());
-                txtJoinDate.setText(newVallue.getJoinedDate());
-                txtPosition.setText(newVallue.getPosition());
-                txtSalary.setText(String.valueOf(newVallue.getSalary()));
-                txtStatus.setText(newVallue.getStatus());
-
-            }
-
-        });
-
         colEmployeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colDOB.setCellValueFactory(new PropertyValueFactory<>("nic"));
-        colNic.setCellValueFactory(new PropertyValueFactory<>("dob"));
-        colSalary.setCellValueFactory(new PropertyValueFactory<>("position"));
-        colPosition.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        colDOB.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        colNic.setCellValueFactory(new PropertyValueFactory<>("nic"));
+        colPosition.setCellValueFactory(new PropertyValueFactory<>("position"));
+        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         colContactNumber.setCellValueFactory(new PropertyValueFactory<>("ContactNumber"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colJoinDate.setCellValueFactory(new PropertyValueFactory<>("joinedDate"));
+        colJoinDate.setCellValueFactory(new PropertyValueFactory<>("joinDate"));
         colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        loadDetails();
 
+        tblEmployeeInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                txtEmployeeId.setText(newValue.getEmployeeId());
+                txtName.setText(newValue.getName());
+                txtNic.setText(newValue.getNic());
+                txtDob.setText(newValue.getDob());
+                txtPosition.setText(newValue.getPosition());
+                txtSalary.setText(String.valueOf(newValue.getSalary()));
+                txtContactNumber.setText(newValue.getContactNumber());
+                txtAddress.setText(newValue.getAddress());
+                txtJoinDate.setText(newValue.getJoinDate());
+                txtStatus.setText(newValue.getStatus());
+            }
+        });
+
+        loadDetails();
     }
 }

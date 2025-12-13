@@ -17,7 +17,6 @@ public class CustomerDto {
     @Id
     @Column(name = "customer_id")
     private String cusId;
-
     private String title;
     private String name;
     private String dob;
@@ -26,4 +25,5 @@ public class CustomerDto {
     private String city;
     private String province;
     private String postalCode;
+
 }

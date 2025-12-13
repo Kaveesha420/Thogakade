@@ -29,4 +29,5 @@ public class ItemDto {
 
     @Column(name = "unitPrice")
     private double unitPrice;
+
 }

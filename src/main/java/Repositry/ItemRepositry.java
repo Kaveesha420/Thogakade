@@ -1,13 +1,11 @@
 package Repositry;
 
-import javafx.scene.control.TextField;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import Model.dto.ItemDto;
+import java.util.List;
 
 public interface ItemRepositry {
-    ResultSet getAllItem() throws SQLException;
-    void addItem(String itemCode, String description, String category, int qtyOnHand, double unitPrice);
-    void updateItem(String itemCode, String description, String category, int qtyOnHand, double unitPrice);
-    void deleteItem(TextField txtItemCode);
+    List<ItemDto> getAllItem();
+    void addItem(ItemDto item);
+    void updateItem(ItemDto item);
+    void deleteItem(String itemCode);
 }
