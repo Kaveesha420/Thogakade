@@ -19,9 +19,7 @@ import java.util.ResourceBundle;
 public class ItemController implements Initializable {
 
     ItemService itemService = new ItemDb();
-    ObservableList <ItemDto> itemDtos = FXCollections.observableArrayList(
-
-    );
+    ObservableList<ItemDto> itemDtos = FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> colCategory;
@@ -57,49 +55,35 @@ public class ItemController implements Initializable {
     private TextField txtUnitPrice;
 
     public void btnDelete(ActionEvent actionEvent) {
-
-        itemDtos.clear();
-
         itemService.DeleteItemsDetails(txtItemCode);
         clearField();
         loadDetails();
     }
 
     public void btnClear(ActionEvent actionEvent) {
-        txtItemCode.setText("");
-        txtDescription.setText("");
-        txtCategory.setText("");
-        txtQtyOnHand.setText("");
-        txtUnitPrice.setText("");
+        clearField();
     }
 
     public void btnUpdate(ActionEvent actionEvent) {
-       itemDtos.clear();
-
         String ItemCode = txtItemCode.getText();
         String Description = txtDescription.getText();
         String Category = txtCategory.getText();
         int QtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
 
-        itemService.UpdateItemsDetails(ItemCode,Description,Category,QtyOnHand,unitPrice);
+        itemService.UpdateItemsDetails(ItemCode, Description, Category, QtyOnHand, unitPrice);
         clearField();
         loadDetails();
-
     }
 
     public void btnAdd(ActionEvent actionEvent) {
-
-        itemDtos.clear();
-
         String ItemCode = txtItemCode.getText();
         String Description = txtDescription.getText();
         String Category = txtCategory.getText();
         int QtyOnHand = Integer.parseInt(txtQtyOnHand.getText());
         double unitPrice = Double.parseDouble(txtUnitPrice.getText());
 
-        itemService.addItemsDetails(ItemCode,Description,Category,QtyOnHand,unitPrice);
-
+        itemService.addItemsDetails(ItemCode, Description, Category, QtyOnHand, unitPrice);
         clearField();
         loadDetails();
     }
@@ -109,10 +93,11 @@ public class ItemController implements Initializable {
         loadDetails();
     }
 
-    public void loadDetails(){
+    public void loadDetails() {
         tblItemInfo.setItems(itemService.getAllItems());
     }
-    public void clearField(){
+
+    public void clearField() {
         txtCategory.clear();
         txtItemCode.clear();
         txtDescription.clear();
@@ -122,24 +107,22 @@ public class ItemController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
 
-            tblItemInfo.getSelectionModel().selectedItemProperty().addListener((observable,oldValue,newValue )-> {
-                if (newValue != null){
-                    txtItemCode.setText(newValue.getItemCode());
-                    txtDescription.setText(newValue.getDescription());
-                    txtCategory.setText(newValue.getCategory());
-                    txtQtyOnHand.setText(String.valueOf(newValue.getQtyOnHand()));
-                    txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
+        tblItemInfo.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                txtItemCode.setText(newValue.getItemCode());
+                txtDescription.setText(newValue.getDescription());
+                txtCategory.setText(newValue.getCategory());
+                txtQtyOnHand.setText(String.valueOf(newValue.getQtyOnHand()));
+                txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
+            }
+        });
 
-                }
-
-            });
-            colItemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
-            colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
-            colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
-            colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
-            colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
-            loadDetails();
-
+        loadDetails();
     }
 }
